@@ -17,5 +17,17 @@ To facilitate the installation process of Flatpak applications through the websi
 - [x] Apps GNOME
 - [ ] AppCenter
 
+## Requirements
+
+- It is necessary to have [Flatpak](https://github.com/flatpak/flatpak) installed
+- [Flathub repositories are required](https://www.flatpak.org/setup/)
+- You must have [GNOME Software](https://apps.gnome.org/app/org.gnome.Software/) installed
+
+## Limitations
+
+Flatline basically uses appstream to tell GNOME Software which app to show, but I still haven't found a way or know if it's possible to tell GS which repository to focus on.
+If you use distributions that focus heavily on using Flatpaks like Fedora Silverblue, you won't notice this.
+Choose Flathub repository on the upper left side
+
 ## Special thanks
 I want to thank [Lains](https://github.com/lainsce) for taking the trouble to create such a cool icon, thanks also to Nahuel for bringing the idea to the table.
