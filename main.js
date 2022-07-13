@@ -1,4 +1,4 @@
-const checkLoadPage = setInterval(() => {
+(function onLoad() {
     const url = new URL(window.location);
     const pathname = url.pathname;
 
@@ -9,7 +9,7 @@ const checkLoadPage = setInterval(() => {
     else if (url.hostname === "apps.gnome.org")
         replaceGnomeLink(pathname);
         
-}, 300);
+})();
 
 function replaceFlathubLink(pathname) {
     const flathubInstallButton = document.querySelector("[download]")
