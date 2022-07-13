@@ -12,7 +12,11 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.flathub.org/*", "*://apps.gnome.org/*"],
+      "matches": [
+        "https://flathub.org/apps/details/*",
+        "https://beta.flathub.org/*",
+        "https://apps.gnome.org/app/*"
+      ],
       "js": ["main.js"]
     }
   ]
