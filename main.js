@@ -1,25 +1,29 @@
 const checkLoadPage = setInterval(() => {
-    const pathname = window.location.pathname;
+    const url = new URL(window.location);
+    const pathname = url.pathname;
 
-    if (window.location.href.includes("beta") && window.location.href.includes("details")) replaceButton(pathname)
-    replaceLink(pathname)
+    if (url.hostname === "beta.flathub.org")
+        replaceButton(pathname);
+    else if (url.hostname === "flathub.org")
+        replaceFlathubLink(pathname);
+    else if (url.hostname === "apps.gnome.org")
+        replaceGnomeLink(pathname);
+        
 }, 300);
 
-function replaceLink(pathname) {
-    // Flathub
+function replaceFlathubLink(pathname) {
     const flathubInstallButton = document.querySelector("[download]")
-    if (pathname.includes("/details/")) flathubInstallButton.href = "appstream://" + pathname.split("/")[3];
+    flathubInstallButton.href = "appstream://" + pathname.split("/")[3];
+}
 
-
-    // Apps GNOME
+function replaceGnomeLink(pathname) {
     const appsGnomeInstallButton =  document.querySelector("a.text-button")
     const occurrences = (pathname.match(/\//g) || []).length
     const app = occurrences == 4 ? pathname.split("/")[3] : pathname.split("/")[2];
-    if (pathname.includes("/app/")) appsGnomeInstallButton.href = "appstream://" + app
+    appsGnomeInstallButton.href = "appstream://" + app
 };
 
 function replaceButton(pathname) {
-    // Flathub beta
     let oldButton = document.querySelector(".Button_primaryButton__jhRGg")
     let newButton = oldButton.cloneNode(true);
 
